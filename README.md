@@ -41,7 +41,10 @@ Find the file `index.js` and complete the tasks.
 
 Edit the `ReadMe` file with your answers.
 
-1. In your own words, define closure (1-2 sentences).
+1. In your own words, define closure (1-2 sentences)
+
+Closure is the ability of a child function or an inner function to reference a variable from its parent or an outer scope.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+Closure is used when the inner function accesses the name from the outer function personalDice(). I can tell because name isn't declared in the child function, but is instead passed as an argument to personalDice, yet the child function was still able to use it.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+The name Dan lways stays the same, but the outcome of the roll (the random number generated) can change each time.
+
 c. What is the lexical scope of `newRoll`? 
+
+newRole is available and accessible within the function personalDice.
 
 ### Task 2c - Exit Ticket
 

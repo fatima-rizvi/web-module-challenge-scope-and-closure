@@ -81,12 +81,12 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(inning, numInnings){
+function finalScore(cb, numInnings){
   let homeScore = 0;
   let awayScore = 0;
   for(i = 0; i < numInnings; i++){
-    homeScore = homeScore + inning();
-    awayScore = awayScore + inning();
+    homeScore = homeScore + cb();
+    awayScore = awayScore + cb();
   }
   let score = {
     "Home": homeScore,
