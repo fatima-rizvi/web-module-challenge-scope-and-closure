@@ -28,7 +28,7 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
- * counter1 is a variable set equal to the function counterMaker whereas counter 2 is its own function. In counter1, the variable count is defined within the function while in counter2 it is defined outside of the function.
+ * counter1 is the returned value of the function counterMaker whereas counter 2 is its own function. In counter1, the variable count is defined within the function while in counter2 it is defined outside of the function.
  * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
@@ -62,8 +62,8 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(min, max){
-  let inningScore = (Math.random() * (max - min)) + min;
+function inning(){
+  let inningScore = Math.floor(Math.random() * (3 - 0) ) + 0;
   return inningScore;
 }
 
@@ -82,19 +82,20 @@ finalScore(inning, 9) might return:
 */ 
 
 function finalScore(inning, numInnings){
-  let homeScore;
-  let awayScore;
+  let homeScore = 0;
+  let awayScore = 0;
   for(i = 0; i < numInnings; i++){
-    homeScore = homeScore + inning(0,4);
-    awayScore = awayScore + inning(0, 4);
+    homeScore = homeScore + inning();
+    awayScore = awayScore + inning();
   }
-  return `{
-    "Home": ${homeScore},
-    "Away": ${awayScore},
-  }`
+  let score = {
+    "Home": homeScore,
+    "Away": awayScore
+  }
+  return score;
 }
 
-
+//console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
@@ -117,8 +118,22 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, numIn) {
+  let finalHomeScore = 0;
+  let finalAwayScore = 0;
+  for(let k = 0; k < numIn; k++){
+    score = getInningScore(inning, 1);
+    console.log(`Inning ${k+1}: Away ${score['Away']} - Home ${score['Home']}`) ;
+    finalHomeScore = finalHomeScore + score['Home'];
+    finalAwayScore = finalAwayScore + score['Away'];
+  }
+  fullFinalScore = {
+    "Home": finalHomeScore,
+    "Away": finalAwayScore
+  }
+  console.log(`Final Score: Away ${fullFinalScore['Away']} - Home ${fullFinalScore['Home']}` )
 }
+
+scoreboard(finalScore, inning, 9);
 
 
