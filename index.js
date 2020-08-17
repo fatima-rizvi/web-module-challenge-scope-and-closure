@@ -28,10 +28,16 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * counter1 is a variable set equal to the function counterMaker whereas counter 2 is its own function. In counter1, the variable count is defined within the function while in counter2 it is defined outside of the function.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ * 
+ * counter2 does because it must look outside of itself to find the variable count.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
+ * counter1 would be better when you want the number to reset everytime you call the function, so for something like rolling two dice. counter2 would be better when you want to keep track of a number and add to it, like a score.
+ * 
 */
 
 // counter1 code
@@ -56,10 +62,9 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(min, max){
+  let inningScore = (Math.random() * (max - min)) + min;
+  return inningScore;
 }
 
 /* Task 3: finalScore()
@@ -76,11 +81,20 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inning, numInnings){
+  let homeScore;
+  let awayScore;
+  for(i = 0; i < numInnings; i++){
+    homeScore = homeScore + inning(0,4);
+    awayScore = awayScore + inning(0, 4);
+  }
+  return `{
+    "Home": ${homeScore},
+    "Away": ${awayScore},
+  }`
 }
+
+
 
 /* Task 4: 
 
