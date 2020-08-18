@@ -100,6 +100,8 @@ console.log("b defined? " + (typeof b !== 'undefined'));
 ```
 I think that the resulting text from this function would be: "a defined? true  b defined? true". This is because var is function scoped and is accessible outside of the function it is in. SO, since a is set equal to b and b is set equal to 3, both variables should be defined, meaning that the console log statements should return true for both of them.
 
+After viewing the answer: Okay so turns out that a would not be defined because setting it to b is not the same as defining it, so it would return "a defined? false  b defined? true" but I think the reasoning was close?
+
 2. Write a function that would allow you to do this using a closure. (This is another interview question we've seen before - when you're ready for answers, view an explanation [here](https://www.coderbyte.com/algorithm/3-common-javascript-closure-questions)).
 
 ```js
